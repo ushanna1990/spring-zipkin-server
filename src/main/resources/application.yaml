@@ -1,0 +1,40 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: spring-zipkin-server
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  tracing:
+    sampling:
+      probability: 1.0       # 1.0 - Trace 100% requests, 0.1 - Trace 10% requests
+  zipkin:
+    tracing:
+      endpoint: http://localhost:8091/api/v2/spans
+
+#Logging Pattern Configuration
+logging:
+  pattern:
+    level: "%5p [traceId=%X{traceId} spanId=%X{spanId}]"
+
+#Eureka Client Configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+# Service URLs
+application:
+  order:
+    service:
+      url: http://localhost:8086/order
+  payment:
+    service:
+      url: http://localhost:8088/payment
