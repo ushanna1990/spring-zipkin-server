@@ -1,10 +1,11 @@
 server:
-  port: 8090
+  port: 8091
 
 spring:
   application:
     name: spring-zipkin-server
 
+#Zipkin and Actuator Configuration
 management:
   endpoints:
     web:
@@ -15,7 +16,7 @@ management:
       probability: 1.0       # 1.0 - Trace 100% requests, 0.1 - Trace 10% requests
   zipkin:
     tracing:
-      endpoint: http://localhost:8091/api/v2/spans
+      endpoint: http://localhost:8092/api/v2/spans
 
 #Logging Pattern Configuration
 logging:
@@ -32,9 +33,6 @@ eureka:
 
 # Service URLs
 application:
-  order:
+  product:
     service:
-      url: http://localhost:8086/order
-  payment:
-    service:
-      url: http://localhost:8088/payment
+      url: http://localhost:8089/product

@@ -1,7 +1,6 @@
 package com.zipkin.server.controller;
 
-import com.zipkin.server.model.Order;
-import com.zipkin.server.model.Payment;
+import com.zipkin.server.model.Product;
 import com.zipkin.server.service.ZipkinServerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +17,8 @@ public class ZipkinServerController {
     @Autowired
     private ZipkinServerService zipkinServerService;
 
-    @GetMapping("/orderData")
-    public ResponseEntity<List<Order>> getOrderData() {
-        return ResponseEntity.ok(zipkinServerService.getOrderApiClientData());
-    }
-
-    @GetMapping("/paymentData")
-    public ResponseEntity<List<Payment>> getPaymentData() {
-        return ResponseEntity.ok(zipkinServerService.getPaymentApiClientData());
+    @GetMapping("/productData")
+    public ResponseEntity<List<Product>> getPaymentData() {
+        return ResponseEntity.ok(zipkinServerService.getProductApiClientData());
     }
 }
